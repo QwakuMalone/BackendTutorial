@@ -1,10 +1,19 @@
-const os = require('os')
+const http = require('http')
 
-// info about the user
-const user = os.userInfo()
+const server = http.createServer((req,res)=>{
+   if (req.url === '/') {
+     res.end('Welcome to our HomePage')
+   }
+   if (req.url === '/about') {
+     res.end('Welcome to our AboutPage')
+   }
+   else{
+    res.end(`Oop!
+        we cant find the page you're looking for`)
+   }
+    
+   
+    
+})
 
-// method returns the system uptime in seconds
-
-
-console.log(`System uptime is ${os.uptime()} seconds`)
-console.log(user)
+server.listen(4000)
